@@ -60,7 +60,7 @@ void readParameters(shared_ptr<rclcpp::Node> &nh)
   nh->declare_parameter<float>("mapping.plane_thr", 0.05f);
   nh->declare_parameter<int>("point_filter_num", 2);
   nh->declare_parameter<std::string>("common.lid_topic", "/livox/lidar");
-  nh->declare_parameter<std::string>("common.imu_topic", "/livox/imu");
+  nh->declare_parameter<std::string>("common.imu_topic", "/livox/imu_transformed");
   nh->declare_parameter<bool>("common.con_frame", false);
   nh->declare_parameter<int>("common.con_frame_num", 1);
   nh->declare_parameter<bool>("common.cut_frame", false);
