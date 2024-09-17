@@ -410,7 +410,7 @@ int main(int argc, char** argv)
     nh->create_publisher<sensor_msgs::msg::PointCloud2>("cloud_effected", 5);
   auto pubLaserCloudMap = nh->create_publisher<sensor_msgs::msg::PointCloud2>("Laser_map", 5);
   auto pubOdomAftMapped = nh->create_publisher<nav_msgs::msg::Odometry>("Odometry", 5);
-  auto pubPath = nh->create_publisher<nav_msgs::msg::Path>("path", 5);
+  auto pubPath = nh->create_publisher<nav_msgs::msg::Path>("traveled_path", 5);
   auto plane_pub = nh->create_publisher<visualization_msgs::msg::Marker>("planner_normal", 5);
   auto tf_broadcaster = std::make_shared<tf2_ros::TransformBroadcaster>(nh);
   //------------------------------------------------------------------------------------------------------
