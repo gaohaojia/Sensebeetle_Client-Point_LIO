@@ -289,8 +289,8 @@ template <typename T> void set_posestamp(T& out)
 void publish_odometry(const rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr& pubOdomAftMapped,
                       std::shared_ptr<tf2_ros::TransformBroadcaster>& tf_br)
 {
-  odomAftMapped.header.frame_id = "odom";
-  odomAftMapped.child_frame_id = "base_link";
+  odomAftMapped.header.frame_id = "local_map";
+  odomAftMapped.child_frame_id = "lio_base_link";
   if (publish_odometry_without_downsample) {
     odomAftMapped.header.stamp = get_ros_time(time_current);
   } else {
@@ -301,8 +301,8 @@ void publish_odometry(const rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPt
   pubOdomAftMapped->publish(odomAftMapped);
 
   geometry_msgs::msg::TransformStamped transform;
-  transform.header.frame_id = "odom";
-  transform.child_frame_id = "base_link";
+  transform.header.frame_id = "local_map";
+  transform.child_frame_id = "lio_base_link";
   transform.transform.translation.x = odomAftMapped.pose.pose.position.x;
   transform.transform.translation.y = odomAftMapped.pose.pose.position.y;
   transform.transform.translation.z = odomAftMapped.pose.pose.position.z;
