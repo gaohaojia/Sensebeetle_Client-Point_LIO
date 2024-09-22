@@ -52,12 +52,7 @@ geometry_msgs::msg::PoseStamped msg_body_pose;
 
 auto logger = rclcpp::get_logger("laserMapping");
 
-void SigHandle(int sig)
-{
-  flg_exit = true;
-  RCLCPP_WARN(logger, "catch sig %d", sig);
-  sig_buffer.notify_all();
-}
+void SigHandle(int sig);
 
 inline void dump_lio_state_to_log(FILE* fp)
 {
@@ -1049,7 +1044,13 @@ int main(int argc, char** argv)
     }
     rate.sleep();
   }
-  //--------------------------save map-----------------------------------
+  return 0;
+}
+
+void SigHandle(int sig)
+{
+  RCLCPP_WARN(logger, "catch sig %d", sig);
+    //--------------------------save map-----------------------------------
   /* 1. make sure you have enough memories
      2. noted that pcd save will influence the real-time performences **/
   if (pcl_wait_save->size() > 0 && pcd_save_en) {
@@ -1060,5 +1061,5 @@ int main(int argc, char** argv)
   }
   fout_out.close();
   fout_imu_pbp.close();
-  return 0;
+  sig_buffer.notify_all();
 }
