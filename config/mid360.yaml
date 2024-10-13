@@ -12,7 +12,7 @@
         runtime_pos_log_enable: False                       # Option: True
 
         common:
-            lid_topic: "lidar_transformed"
+            lid_topic: "livox/lidar_transformed"
             imu_topic: "imu_transformed"
             con_frame: False                                # True: if you need to combine several LiDAR frames into one
             con_frame_num: 1                                # the number of frames combined
