@@ -1017,7 +1017,7 @@ int main(int argc, char ** argv)
     /* 2. noted that pcd save will influence the real-time performences **/
   if (pcl_wait_save->size() > 0 && pcd_save_en) {
     string file_name = string("scans.pcd");
-    string all_points_dir(string(string(ROOT_DIR) + "PCD/") + file_name);
+    string all_points_dir(string(string(ROOT_DIR) + "../../save/") + file_name);
     pcl::PCDWriter pcd_writer;
     pcd_writer.writeBinary(all_points_dir, *pcl_wait_save);
   }
